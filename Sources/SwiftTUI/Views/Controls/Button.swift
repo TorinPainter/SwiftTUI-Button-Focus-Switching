@@ -58,6 +58,11 @@ public struct Button<Label: View>: View, PrimitiveView {
             }
         }
 
+        override func willRemoveFromSuperview() {
+            resignFirstResponder() // Clear focus when button is removed
+            super.willRemoveFromSuperview()
+        }
+
         override var selectable: Bool { true }
 
         override func becomeFirstResponder() {

@@ -82,6 +82,10 @@ public class Application {
         }
     }
 
+    public static func resignFocus(){
+        shared?.rootNode?.resignFirstResponderRecursively()
+    }
+
     private func setInputMode() {
         var tattr = termios()
         tcgetattr(STDIN_FILENO, &tattr)

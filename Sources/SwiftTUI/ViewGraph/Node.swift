@@ -90,6 +90,13 @@ final class Node {
         }
     }
 
+    func resignFirstResponderRecursively() {
+        control?.resignFirstResponder()
+        for child in children {
+            child.resignFirstResponderRecursively()
+        }
+    }
+
     func removeNode(at index: Int) {
         if built {
             for i in (0 ..< children[index].size).reversed() {
