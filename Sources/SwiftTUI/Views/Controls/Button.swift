@@ -58,9 +58,10 @@ public struct Button<Label: View>: View, PrimitiveView {
             }
         }
 
-        override func willRemoveFromSuperview() {
-            resignFirstResponder() // Clear focus when button is removed
-            super.willRemoveFromSuperview()
+        // Added
+        override func removeFromSuperview() {
+            resignFirstResponder()
+            super.removeFromSuperview()
         }
 
         override var selectable: Bool { true }
@@ -82,6 +83,10 @@ public struct Button<Label: View>: View, PrimitiveView {
             let layer = ButtonLayer()
             self.buttonLayer = layer
             return layer
+        }
+
+        deinit {
+            resignFirstResponder()
         }
     }
 
