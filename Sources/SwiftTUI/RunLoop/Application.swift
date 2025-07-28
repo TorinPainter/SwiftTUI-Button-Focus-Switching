@@ -51,6 +51,10 @@ public class Application {
         #endif
     }
 
+    public func focus(button: Control){
+        forceFocus(button: button)
+    }
+
     public func start() {
         setInputMode()
         updateWindowSize()
@@ -87,6 +91,11 @@ public class Application {
         tcgetattr(STDIN_FILENO, &tattr)
         tattr.c_lflag &= ~tcflag_t(ECHO | ICANON)
         tcsetattr(STDIN_FILENO, TCSAFLUSH, &tattr);
+    }
+
+    private func forceFocus(button: Control){
+        window.firstResponder?.resignFirstResponder()
+        window.firstResponder = button
     }
 
     private func handleInput() {
