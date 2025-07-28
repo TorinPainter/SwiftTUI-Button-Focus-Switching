@@ -51,7 +51,7 @@ public class Application {
         #endif
     }
 
-    public func focus(button: Control){
+    public func focus(button: Button){
         forceFocus(button: button)
     }
 
@@ -93,9 +93,10 @@ public class Application {
         tcsetattr(STDIN_FILENO, TCSAFLUSH, &tattr);
     }
 
-    private func forceFocus(button: Control){
+    private func forceFocus(button: button){
         window.firstResponder?.resignFirstResponder()
         window.firstResponder = button
+        window.firstResponder?.becomeFirstResponder()
     }
 
     private func handleInput() {
