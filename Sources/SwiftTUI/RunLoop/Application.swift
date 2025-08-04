@@ -7,7 +7,7 @@ public class Application {
     private let node: Node
     private let window: Window
     private let control: Control
-    private let renderer: Renderer
+    public let renderer: Renderer
 
     private let runLoopType: RunLoopType
 
@@ -157,7 +157,7 @@ public class Application {
         }
     }
 
-    private func update() {
+    public func update() {
         updateScheduled = false
 
         for node in invalidatedNodes {
